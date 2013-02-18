@@ -6,7 +6,6 @@ gem 'thin'
 gem 'jquery-rails'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'capybara'
