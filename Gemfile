@@ -5,6 +5,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -12,6 +13,7 @@ group :development, :test do
   gem 'capybara'
   gem 'pry-rails'
   gem 'pry-doc'
+  gem 'better_errors'
   gem 'awesome_print'
   gem 'binding_of_caller'
 end
@@ -31,8 +33,4 @@ end
 
 group :test do
   gem 'factory_girl_rails'
-end
-
-group :production do
-  gem 'pg'
 end
