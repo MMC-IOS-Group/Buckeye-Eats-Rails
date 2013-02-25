@@ -1,0 +1,29 @@
+<h1>Listing openings</h1>
+
+<table>
+  <tr>
+    <th>Opening time</th>
+    <th>Closing time</th>
+    <th>Day of week</th>
+    <th>Restaurant</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @openings.each do |opening| %>
+  <tr>
+    <td><%= opening.opening_time %></td>
+    <td><%= opening.closing_time %></td>
+    <td><%= opening.day_of_week %></td>
+    <td><%= opening.restaurant_id %></td>
+    <td><%= link_to 'Show', opening %></td>
+    <td><%= link_to 'Edit', edit_opening_path(opening) %></td>
+    <td><%= link_to 'Destroy', opening, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Opening', new_opening_path %>
