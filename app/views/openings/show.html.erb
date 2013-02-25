@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Opening time:</b>
+  <%= @opening.opening_time %>
+</p>
+
+<p>
+  <b>Closing time:</b>
+  <%= @opening.closing_time %>
+</p>
+
+<p>
+  <b>Day of week:</b>
+  <%= @opening.day_of_week %>
+</p>
+
+<p>
+  <b>Restaurant:</b>
+  <%= @opening.restaurant_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_opening_path(@opening) %> |
+<%= link_to 'Back', openings_path %>

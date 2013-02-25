@@ -1,4 +1,7 @@
 BuckeyeEats::Application.routes.draw do
+  resources :openings
+
+
   resources :restaurants
 
 
