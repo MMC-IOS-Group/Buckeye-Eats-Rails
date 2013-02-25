@@ -1,29 +1,42 @@
-<h1>Listing openings</h1>
-
-<table>
-  <tr>
-    <th>Opening time</th>
-    <th>Closing time</th>
-    <th>Day of week</th>
-    <th>Restaurant</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @openings.each do |opening| %>
-  <tr>
-    <td><%= opening.opening_time %></td>
-    <td><%= opening.closing_time %></td>
-    <td><%= opening.day_of_week %></td>
-    <td><%= opening.restaurant_id %></td>
-    <td><%= link_to 'Show', opening %></td>
-    <td><%= link_to 'Edit', edit_opening_path(opening) %></td>
-    <td><%= link_to 'Destroy', opening, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Opening -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:opening_time) %></th>
+      <th><%= model_class.human_attribute_name(:closing_time) %></th>
+      <th><%= model_class.human_attribute_name(:day_of_week) %></th>
+      <th><%= model_class.human_attribute_name(:restaurant_id) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @openings.each do |opening| %>
+      <tr>
+        <td><%= link_to opening.id, opening_path(opening) %></td>
+        <td><%= opening.opening_time %></td>
+        <td><%= opening.closing_time %></td>
+        <td><%= opening.day_of_week %></td>
+        <td><%= opening.restaurant_id %></td>
+        <td><%=l opening.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_opening_path(opening), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      opening_path(opening),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Opening', new_opening_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_opening_path,
+            :class => 'btn' %>

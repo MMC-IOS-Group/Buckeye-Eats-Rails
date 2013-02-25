@@ -1,25 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Opening -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Opening time:</b>
-  <%= @opening.opening_time %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:opening_time) %>:</strong></dt>
+  <dd><%= @opening.opening_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:closing_time) %>:</strong></dt>
+  <dd><%= @opening.closing_time %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:day_of_week) %>:</strong></dt>
+  <dd><%= @opening.day_of_week %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:restaurant_id) %>:</strong></dt>
+  <dd><%= @opening.restaurant_id %></dd>
+</dl>
 
-<p>
-  <b>Closing time:</b>
-  <%= @opening.closing_time %>
-</p>
-
-<p>
-  <b>Day of week:</b>
-  <%= @opening.day_of_week %>
-</p>
-
-<p>
-  <b>Restaurant:</b>
-  <%= @opening.restaurant_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_opening_path(@opening) %> |
-<%= link_to 'Back', openings_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              openings_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_opening_path(@opening), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              opening_path(@opening),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
